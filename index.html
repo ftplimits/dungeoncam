@@ -31,6 +31,10 @@
             flex-direction: column;
         }
 
+        #overlay-container:not(.minimized) {
+            overflow: hidden;
+        }
+
         #overlay-container.minimized {
             height: 50px;
             top: auto;
@@ -137,6 +141,8 @@
             border: none;
             background: #000;
             display: none;
+            width: 100%;
+            height: 100%;
         }
 
         #video-frame.active {
