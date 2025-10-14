@@ -2,15 +2,15 @@
   "name": "Dungeon Cam",
   "version": "1.0.0",
   "manifest_version": 1,
-  "author": "Your Name",
-  "description": "Embed Whereby video chat as an overlay on your Owlbear Rodeo maps",
-  "homepage_url": "https://github.com/yourusername/owlbear-video-overlay",
-  "icon": "/icon.svg",
+  "author": "ftplimits",
+  "description": "Embed Jitsi video chat as an overlay on your Owlbear Rodeo maps",
+  "homepage_url": "https://github.com/ftplimits/dungeoncam",
+  "icon": "https://ftplimits.github.io/dungeoncam/icon.svg",
   "action": {
-    "title": "Video Chat",
-    "icon": "/icon.svg",
-    "popover": "/index.html",
+    "title": "Dungeon Cam",
+    "icon": "https://ftplimits.github.io/dungeoncam/icon.svg",
+    "popover": "https://ftplimits.github.io/dungeoncam/index.html",
     "height": 800,
-    "width": 250
+    "width": 300
   }
 }
