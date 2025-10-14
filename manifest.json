@@ -10,7 +10,7 @@
     "title": "Video Chat",
     "icon": "/icon.svg",
     "popover": "/index.html",
-    "height": 400,
-    "width": 350
+    "height": 800,
+    "width": 250
   }
 }
