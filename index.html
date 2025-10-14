@@ -156,6 +156,13 @@
             color: #666;
             margin-top: 10px;
         }
+
+        .example-text {
+            font-size: 11px;
+            color: #888;
+            font-style: italic;
+            margin-top: 5px;
+        }
     </style>
 </head>
 <body>
@@ -170,14 +177,15 @@
 
         <div id="setup-screen">
             <h2>Join Video Chat</h2>
-            <p>Enter your Whereby room URL below. You can create a free room at whereby.com</p>
+            <p>Enter a room name below. Everyone in your game should use the same room name.</p>
             <input 
                 type="text" 
                 id="room-input" 
-                placeholder="https://yourname.whereby.com/your-room"
+                placeholder="my-awesome-game"
             />
+            <p class="example-text">Example: dungeon-dragons-2024</p>
             <button id="join-btn">Join Room</button>
-            <p id="info-text">Tip: All players should use the same room URL</p>
+            <p id="info-text">Powered by Jitsi Meet - Free & Open Source</p>
         </div>
 
         <iframe id="video-frame" allow="camera; microphone; fullscreen; speaker; display-capture"></iframe>
@@ -203,37 +211,40 @@
         const closeBtn = document.getElementById('close-btn');
         const resizeHandle = document.querySelector('.resize-handle');
 
-        // Load saved room URL from localStorage
-        const savedRoom = localStorage.getItem('wherebyRoom');
+        // Load saved room name
+        const savedRoom = localStorage.getItem('jitsiRoom');
         if (savedRoom) {
             roomInput.value = savedRoom;
         }
 
         // Join room functionality
         joinBtn.addEventListener('click', () => {
-            let roomUrl = roomInput.value.trim();
+            let roomName = roomInput.value.trim();
             
-            if (!roomUrl) {
-                alert('Please enter a Whereby room URL');
+            if (!roomName) {
+                alert('Please enter a room name');
                 return;
             }
 
-            // Add whereby domain if just room name is provided
-            if (!roomUrl.includes('whereby.com')) {
-                alert('Please enter a full Whereby room URL (e.g., https://yourname.whereby.com/room)');
+            // Clean room name (remove spaces, special chars, make lowercase)
+            roomName = roomName.toLowerCase()
+                .replace(/[^a-z0-9-_]/g, '-')
+                .replace(/-+/g, '-')
+                .replace(/^-|-$/g, '');
+
+            if (!roomName) {
+                alert('Please enter a valid room name (letters, numbers, hyphens only)');
                 return;
             }
 
-            // Add minimal parameter to hide Whereby branding on free tier
-            if (!roomUrl.includes('?')) {
-                roomUrl += '?minimal';
-            }
+            // Save room name
+            localStorage.setItem('jitsiRoom', roomName);
 
-            // Save room URL
-            localStorage.setItem('wherebyRoom', roomInput.value.trim());
+            // Build Jitsi URL with config parameters for better embedding
+            const jitsiUrl = `https://meet.jit.si/${roomName}#config.startWithAudioMuted=false&config.startWithVideoMuted=false&config.prejoinPageEnabled=false&config.disableDeepLinking=true`;
 
             // Load video
-            videoFrame.src = roomUrl;
+            videoFrame.src = jitsiUrl;
             setupScreen.classList.add('hidden');
             videoFrame.classList.add('active');
         });
