@@ -2,14 +2,14 @@
   "name": "Video Chat Overlay",
   "version": "1.0.0",
   "manifest_version": 1,
-  "author": "ftplimits",
+  "author": "Your Name",
   "description": "Embed Whereby video chat as an overlay on your Owlbear Rodeo maps",
-  "homepage_url": "https://github.com/ftplimits/dungeoncam",
-  "icon": "https://ftplimits.github.io/dungeoncam/icon.svg",
+  "homepage_url": "https://github.com/yourusername/owlbear-video-overlay",
+  "icon": "/icon.svg",
   "action": {
     "title": "Video Chat",
-    "icon": "https://ftplimits.github.io/dungeoncam/icon.svg",
-    "popover": "https://ftplimits.github.io/dungeoncam/index.html",
+    "icon": "/icon.svg",
+    "popover": "/index.html",
     "height": 400,
     "width": 350
   }
