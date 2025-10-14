@@ -9,7 +9,7 @@
   "action": {
     "title": "Video Chat",
     "icon": "https://ftplimits.github.io/owlbear-video-overlay/icon.svg",
-    "popover": "ftplimits.github.io/owlbear-video-overlay/index.html",
+    "popover": "https://ftplimits.github.io/owlbear-video-overlay/index.html",
     "height": 400,
     "width": 350
   }
